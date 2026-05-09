@@ -8,10 +8,19 @@ import BehindScenes from "./components/BehindScenes";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import LoadingScreen from "./components/LoadingScreen";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 function App() {
+  useSmoothScroll();
+
+  
   return (
     <div className="app">
+      <LoadingScreen />
+
+
+
       <Navbar />
       <Hero />
       <Works />

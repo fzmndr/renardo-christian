@@ -2230,3 +2230,115 @@ button {
     grid-template-columns: 1fr;
   }
 }
+/* =========================
+   LOADING SCREEN
+========================= */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(234, 88, 12, 0.25), transparent 32%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08), transparent 28%),
+    #080a0c;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.loading-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  text-align: center;
+  animation: loadingFadeUp 0.9s ease forwards;
+}
+
+.loading-logo {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 24px;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(251, 146, 60, 0.45);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)),
+    #0f1115;
+  box-shadow:
+    0 0 40px rgba(234, 88, 12, 0.22),
+    inset 0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+.loading-logo span {
+  color: #fb923c;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.loading-content h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.loading-content p {
+  color: #a3a3a3;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.loading-bar {
+  width: min(320px, 70vw);
+  height: 5px;
+  margin: 34px auto 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.loading-bar div {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ea580c, #fb923c, #fed7aa);
+  transform: translateX(-100%);
+  animation: loadingProgress 1.7s ease forwards;
+}
+
+@keyframes loadingProgress {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes loadingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* =========================
+   SMOOTH SCROLL FIX
+========================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
